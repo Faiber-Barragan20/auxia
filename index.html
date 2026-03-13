@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automatiza con auxia - Escala tu Empresa 24/7</title>
+    
+    <!-- Meta tags for SEO & Social -->
+    <meta name="description" content="Automatiza los procesos repetitivos de tu empresa con auxia. Ahorra tiempo, elimina errores humanos y multiplica tu productividad operando 24/7." />
+    <meta property="og:title" content="Automatiza con auxia - Escala tu Empresa 24/7" />
+    <meta property="og:description" content="El SaaS definitivo para automatizar tareas repetitivas y multiplicar tu productividad sin complicaciones técnicas." />
+    
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25d1f4",
+                        "primary-dark": "#0ea5e9",
+                        "background-light": "#0a1618",
+                        "background-dark": "#050d0e",
+                        "accent": "#0df2f2",
+                    },
+                    fontFamily: {
+                        "display": ["Outfit", "sans-serif"]
+                    },
+                    animation: {
+                        'blob': 'blob 15s infinite alternate',
+                        'blob-reverse': 'blob-reverse 20s infinite alternate',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'blob-reverse': {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(-30px, 50px) scale(1.2)' },
+                            '66%': { transform: 'translate(20px, -20px) scale(0.8)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(37, 209, 244, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(37, 209, 244, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass:hover {
+            border: 1px solid rgba(37, 209, 244, 0.3);
+            box-shadow: 0 0 30px rgba(37, 209, 244, 0.15);
+        }
+        .glass-dark {
+            background: rgba(5, 13, 14, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(37, 209, 244, 0.12);
+        }
+
+        /* Subtle Animated Background Elements */
+        .bg-gradient-mesh {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+            background: radial-gradient(circle at 15% 50%, rgba(37, 209, 244, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(13, 242, 242, 0.03) 0%, transparent 50%);
+        }
+        .grid-pattern {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background-image: radial-gradient(rgba(37, 209, 244, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(37, 209, 244, 0.5);
+        }
+
+        /* Prevent zooming on iOS */
+        input[type="text"], input[type="email"], input[type="tel"] {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 min-h-screen overflow-x-hidden selection:bg-primary selection:text-background-dark">
+    
+    <!-- Animated Subtle Background -->
+    <div class="bg-gradient-mesh pointer-events-none"></div>
+    <div class="grid-pattern pointer-events-none"></div>
+    
+    <!-- Floating Ambient Orbs (Animated) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 ambient-orb animate-blob pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent/10 ambient-orb animate-blob-reverse pointer-events-none" style="animation-delay: -5s"></div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 glass-dark w-full transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center rounded-lg shadow-[0_0_20px_rgba(37,209,244,0.4)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.6)] transition-all">
+                    <span class="material-symbols-outlined text-background-dark font-bold">account_tree</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white group-hover:text-glow transition-all">auxia</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Inicio</a>
+                <a href="condiciones.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Condiciones</a>
+                <a href="privacidad.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Privacidad</a>
+                <a href="eliminacion-datos.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Eliminación de Datos</a>
+            </div>
+
+            <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center justify-center px-6 h-11 bg-white text-background-dark rounded-full font-bold text-sm transition-all active:scale-95 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                Contactar por WhatsApp
+            </a>
+            
+            <button class="md:hidden text-primary p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg" aria-label="Abrir menú">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="relative z-10 w-full">
+        <!-- HERO SECTION -->
+        <section class="max-w-7xl mx-auto px-6 pt-24 pb-32 text-center md:pt-40 md:pb-48">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 shadow-[0_0_15px_rgba(37,209,244,0.15)]">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_10px_rgba(37,209,244,1)]"></span>
+                </span>
+                La solución para empresas que escalan
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight text-white leading-[1.05] mb-8 max-w-5xl mx-auto">
+                Automatiza tus procesos, <br class="hidden md:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-white animate-gradient text-glow">escala tu futuro.</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
+                ¿Tu equipo pasa el 40% del día en procesos manuales y repetitivos? <strong>Automatiza con auxia</strong> integra tus herramientas, elimina el error humano y hace que tu negocio opere 24/7 sin complicaciones técnicas.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 h-16 bg-primary text-background-dark rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(37,209,244,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50">
+                    Transformar mi empresa
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                </a>
+                <p class="text-sm text-slate-500 mt-4 sm:mt-0 sm:ml-4 font-medium">Asesoría 100% gratuita por WhatsApp</p>
+            </div>
+        </section>
+
+        <!-- BENEFITS / SOLUTION SECTION -->
+        <section class="max-w-7xl mx-auto px-6 pb-40 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Por qué las empresas eligen auxia</h2>
+                <p class="text-slate-400 text-lg">Soluciones diseñadas para multiplicar tu rentabilidad casi de inmediato.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                        <span class="material-symbols-outlined text-4xl">schedule</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Recupera tu tiempo</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Libera a tu equipo de tareas administrativas tediosas. Lo que antes tomaba horas, nuestros flujos automatizados lo resuelven en milisegundos.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                        <span class="material-symbols-outlined text-4xl">verified</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Cero errores humanos</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Un pequeño fallo manual puede costar clientes. La precisión de nuestro software garantiza que cada dato, factura o correo se envíe de manera impecable siempre.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                        <span class="material-symbols-outlined text-4xl">trending_up</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Escala 24/7</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Tu negocio no debería detenerse cuando tú duermes. Construimos sistemas que atienden clientes, procesan pagos y gestionan información sin pausa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="max-w-5xl mx-auto px-6 pb-32">
+            <div class="relative overflow-hidden rounded-[3rem] p-12 md:p-20 text-center glass border border-primary/20 shadow-[0_0_60px_rgba(37,209,244,0.08)]">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none"></div>
+                
+                <h2 class="text-4xl md:text-6xl font-black mb-6 relative z-10 text-white text-glow tracking-tight">
+                    El momento de escalar es ahora
+                </h2>
+                <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto relative z-10 font-light">
+                    Hablemos de tus procesos actuales y descubre cuánto tiempo y dinero podrías ahorrar mensualmente al implementar automatizaciones inteligentes.
+                </p>
+                
+                <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="relative z-10 inline-flex items-center gap-3 px-12 h-16 bg-white text-background-dark rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
+                    Agendar consulta gratuita
+                    <span class="material-symbols-outlined">send</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-primary/10 py-12 glass-dark z-20 relative">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center rounded-lg shadow-[0_0_15px_rgba(37,209,244,0.3)]">
+                    <span class="material-symbols-outlined text-background-dark text-sm font-bold">account_tree</span>
+                </div>
+                <span class="font-bold text-white tracking-wide">auxia</span>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium">
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Inicio</a>
+                <a href="condiciones.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Condiciones</a>
+                <a href="privacidad.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Privacidad</a>
+                <a href="eliminacion-datos.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Eliminación de Datos</a>
+            </div>
+
+            <div class="text-slate-500 text-sm">
+                &copy; 2024 Automatiza con auxia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Action Button -->
+    <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp para más información" class="fixed bottom-6 right-6 z-[100] w-[60px] h-[60px] bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.5)] transition-all duration-300 hover:scale-110 active:scale-95 group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/50">
+        <!-- Pulse effect behind icon -->
+        <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30 group-hover:opacity-50"></span>
+        <svg class="w-8 h-8 fill-current relative z-10" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+        </svg>
+    </a>
+</body>
+</html>
