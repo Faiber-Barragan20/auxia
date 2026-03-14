@@ -54,99 +54,8 @@
         }
     </script>
 
-    <style>
-        body { font-family: 'Outfit', sans-serif; }
-        
-        /* Glassmorphism Classes */
-        .glass {
-            background: rgba(37, 209, 244, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(37, 209, 244, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transform: translateZ(0); /* Hardware acceleration to improve mobile scroll */
-        }
-        .glass:hover {
-            border: 1px solid rgba(37, 209, 244, 0.3);
-            box-shadow: 0 0 30px rgba(37, 209, 244, 0.15);
-        }
-        .glass-dark {
-            background: rgba(5, 13, 14, 0.75);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(37, 209, 244, 0.12);
-            transform: translateZ(0);
-        }
-
-        /* Subtle Animated Background Elements */
-        .bg-gradient-mesh {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -2;
-            background: radial-gradient(circle at 15% 50%, rgba(37, 209, 244, 0.04) 0%, transparent 50%),
-                        radial-gradient(circle at 85% 30%, rgba(13, 242, 242, 0.03) 0%, transparent 50%);
-            transform: translateZ(0);
-        }
-        .grid-pattern {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            background-image: radial-gradient(rgba(37, 209, 244, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.5;
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            transform: translateZ(0);
-        }
-        .ambient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-            will-change: transform;
-            transform: translateZ(0);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 30px rgba(37, 209, 244, 0.5);
-        }
-
-        /* Prevent zooming on iOS */
-        input[type="text"], input[type="email"], input[type="tel"] {
-            font-size: 16px;
-        }
-
-        /* Mobile Scroll Performance Optimizations - Hybrid Smooth Mode */
-        @media (max-width: 768px) {
-            .ambient-orb {
-                /* Shrink orbs instead of removing them, disable animation to stop reflows */
-                filter: blur(30px);
-                transform: scale(0.6) translateZ(0); 
-                opacity: 0.25;
-            }
-            .glass {
-                /* Pseudo-glassmorphism without blur: Solid fast background with bright edges */
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                background: linear-gradient(135deg, rgba(37, 209, 244, 0.08), rgba(37, 209, 244, 0.02));
-                border: 1px solid rgba(37, 209, 244, 0.2);
-                box-shadow: inset 0 0 20px rgba(37, 209, 244, 0.03); /* subtle inner volume glow */
-            }
-            .glass-dark {
-                /* Same for nav: nearly solid with zero blur cost */
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                background: rgba(5, 13, 14, 0.98); 
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
-            }
-            
-            /* Reduce animation overhead on mobile */
-            .animate-blob, .animate-blob-reverse {
-                animation: none !important;
-            }
-        }
-    </style>
+    <!-- App Styles -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="bg-background-dark text-slate-100 min-h-screen overflow-x-hidden selection:bg-primary selection:text-background-dark">
@@ -162,7 +71,7 @@
     <!-- Sticky Navigation -->
     <nav class="sticky top-0 z-50 glass-dark w-full transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1">
+            <a href="#/inicio" class="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1">
                 <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center rounded-lg shadow-[0_0_20px_rgba(37,209,244,0.4)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.6)] transition-all">
                     <span class="material-symbols-outlined text-background-dark font-bold">account_tree</span>
                 </div>
@@ -170,10 +79,10 @@
             </a>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-semibold text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Inicio</a>
-                <a href="condiciones.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Condiciones</a>
-                <a href="privacidad.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Privacidad</a>
-                <a href="eliminacion-datos.html" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Eliminación de Datos</a>
+                <a href="#/inicio" data-nav-link="inicio" class="text-sm font-semibold text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Inicio</a>
+                <a href="#/condiciones" data-nav-link="condiciones" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Condiciones</a>
+                <a href="#/privacidad" data-nav-link="privacidad" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Privacidad</a>
+                <a href="#/eliminacion-datos" data-nav-link="eliminacion-datos" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-2 py-1">Eliminación de Datos</a>
             </div>
 
             <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center justify-center px-6 h-11 bg-white text-background-dark rounded-full font-bold text-sm transition-all active:scale-95 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
@@ -188,10 +97,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-background-dark/95 backdrop-blur-xl border-t border-primary/10 transition-all duration-300">
             <div class="px-6 py-4 flex flex-col gap-4">
-                <a href="index.html" class="text-base font-semibold text-primary">Inicio</a>
-                <a href="condiciones.html" class="text-base font-medium text-slate-300 hover:text-primary">Condiciones</a>
-                <a href="privacidad.html" class="text-base font-medium text-slate-300 hover:text-primary">Privacidad</a>
-                <a href="eliminacion-datos.html" class="text-base font-medium text-slate-300 hover:text-primary">Eliminación de Datos</a>
+                <a href="#/inicio" data-mobile-link="inicio" class="text-base font-semibold text-primary">Inicio</a>
+                <a href="#/condiciones" data-mobile-link="condiciones" class="text-base font-medium text-slate-300 hover:text-primary">Condiciones</a>
+                <a href="#/privacidad" data-mobile-link="privacidad" class="text-base font-medium text-slate-300 hover:text-primary">Privacidad</a>
+                <a href="#/eliminacion-datos" data-mobile-link="eliminacion-datos" class="text-base font-medium text-slate-300 hover:text-primary">Eliminación de Datos</a>
                 <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center px-6 h-11 bg-white text-background-dark rounded-full font-bold text-sm mt-2">
                     Contactar por WhatsApp
                 </a>
@@ -200,95 +109,230 @@
     </nav>
 
     <main class="relative z-10 w-full">
-        <!-- HERO SECTION -->
-        <section class="max-w-7xl mx-auto px-6 pt-24 pb-32 text-center md:pt-40 md:pb-48">
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 shadow-[0_0_15px_rgba(37,209,244,0.15)]">
-                <span class="relative flex h-2.5 w-2.5">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_10px_rgba(37,209,244,1)]"></span>
-                </span>
-                La solución para empresas que escalan
-            </div>
-            
-            <h1 class="text-5xl md:text-8xl font-black tracking-tight text-white leading-[1.05] mb-8 max-w-5xl mx-auto">
-                Automatiza tus procesos, <br class="hidden md:block"/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-white animate-gradient text-glow">escala tu futuro.</span>
-            </h1>
-            
-            <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
-                ¿Tu equipo pasa el 40% del día en procesos manuales y repetitivos? <strong>Automatiza con auxia</strong> integra tus herramientas, elimina el error humano y hace que tu negocio opere 24/7 sin complicaciones técnicas.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 h-16 bg-primary text-background-dark rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(37,209,244,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50">
-                    Transformar mi empresa
-                    <span class="material-symbols-outlined">rocket_launch</span>
-                </a>
-                <p class="text-sm text-slate-500 mt-4 sm:mt-0 sm:ml-4 font-medium">Asesoría 100% gratuita por WhatsApp</p>
-            </div>
-        </section>
 
-        <!-- BENEFITS / SOLUTION SECTION -->
-        <section class="max-w-7xl mx-auto px-6 pb-40 relative">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Por qué las empresas eligen auxia</h2>
-                <p class="text-slate-400 text-lg">Soluciones diseñadas para multiplicar tu rentabilidad casi de inmediato.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Benefit 1 -->
-                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
-                        <span class="material-symbols-outlined text-4xl">schedule</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Recupera tu tiempo</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">
-                        Libera a tu equipo de tareas administrativas tediosas. Lo que antes tomaba horas, nuestros flujos automatizados lo resuelven en milisegundos.
-                    </p>
+        <!-- ==================== VIEW: INICIO ==================== -->
+        <div class="spa-view" data-view="inicio">
+            <!-- HERO SECTION -->
+            <section class="max-w-7xl mx-auto px-6 pt-24 pb-32 text-center md:pt-40 md:pb-48">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 shadow-[0_0_15px_rgba(37,209,244,0.15)]">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_10px_rgba(37,209,244,1)]"></span>
+                    </span>
+                    La solución para empresas que escalan
                 </div>
-
-                <!-- Benefit 2 -->
-                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
-                        <span class="material-symbols-outlined text-4xl">verified</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Cero errores humanos</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">
-                        Un pequeño fallo manual puede costar clientes. La precisión de nuestro software garantiza que cada dato, factura o correo se envíe de manera impecable siempre.
-                    </p>
-                </div>
-
-                <!-- Benefit 3 -->
-                <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
-                        <span class="material-symbols-outlined text-4xl">trending_up</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Escala 24/7</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">
-                        Tu negocio no debería detenerse cuando tú duermes. Construimos sistemas que atienden clientes, procesan pagos y gestionan información sin pausa.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="max-w-5xl mx-auto px-6 pb-32">
-            <div class="relative overflow-hidden rounded-[3rem] p-12 md:p-20 text-center glass border border-primary/20 shadow-[0_0_60px_rgba(37,209,244,0.08)]">
-                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none"></div>
                 
-                <h2 class="text-4xl md:text-6xl font-black mb-6 relative z-10 text-white text-glow tracking-tight">
-                    El momento de escalar es ahora
-                </h2>
-                <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto relative z-10 font-light">
-                    Hablemos de tus procesos actuales y descubre cuánto tiempo y dinero podrías ahorrar mensualmente al implementar automatizaciones inteligentes.
+                <h1 class="text-5xl md:text-8xl font-black tracking-tight text-white leading-[1.05] mb-8 max-w-5xl mx-auto">
+                    Automatiza tus procesos, <br class="hidden md:block"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-white animate-gradient text-glow">escala tu futuro.</span>
+                </h1>
+                
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
+                    ¿Tu equipo pasa el 40% del día en procesos manuales y repetitivos? <strong>Automatiza con auxia</strong> integra tus herramientas, elimina el error humano y hace que tu negocio opere 24/7 sin complicaciones técnicas.
                 </p>
                 
-                <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="relative z-10 w-full sm:w-auto flex sm:inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-12 h-auto min-h-[4rem] py-3 bg-white text-background-dark rounded-[2rem] font-bold text-sm sm:text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
-                    <span class="text-center whitespace-normal leading-tight">Agendar consulta gratuita</span>
-                    <span class="material-symbols-outlined shrink-0 text-xl sm:text-2xl">send</span>
-                </a>
-            </div>
-        </section>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 h-16 bg-primary text-background-dark rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(37,209,244,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50">
+                        Transformar mi empresa
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                    </a>
+                    <p class="text-sm text-slate-500 mt-4 sm:mt-0 sm:ml-4 font-medium">Asesoría 100% gratuita por WhatsApp</p>
+                </div>
+            </section>
+
+            <!-- BENEFITS / SOLUTION SECTION -->
+            <section class="max-w-7xl mx-auto px-6 pb-40 relative">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Por qué las empresas eligen auxia</h2>
+                    <p class="text-slate-400 text-lg">Soluciones diseñadas para multiplicar tu rentabilidad casi de inmediato.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Benefit 1 -->
+                    <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                            <span class="material-symbols-outlined text-4xl">schedule</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Recupera tu tiempo</h3>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            Libera a tu equipo de tareas administrativas tediosas. Lo que antes tomaba horas, nuestros flujos automatizados lo resuelven en milisegundos.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                            <span class="material-symbols-outlined text-4xl">verified</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Cero errores humanos</h3>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            Un pequeño fallo manual puede costar clientes. La precisión de nuestro software garantiza que cada dato, factura o correo se envíe de manera impecable siempre.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="glass p-10 rounded-[2rem] group transition-all duration-500 hover:-translate-y-2">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(37,209,244,0.1)] group-hover:shadow-[0_0_30px_rgba(37,209,244,0.3)]">
+                            <span class="material-symbols-outlined text-4xl">trending_up</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Escala 24/7</h3>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            Tu negocio no debería detenerse cuando tú duermes. Construimos sistemas que atienden clientes, procesan pagos y gestionan información sin pausa.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA SECTION -->
+            <section class="max-w-5xl mx-auto px-6 pb-32">
+                <div class="relative overflow-hidden rounded-[3rem] p-12 md:p-20 text-center glass border border-primary/20 shadow-[0_0_60px_rgba(37,209,244,0.08)]">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none"></div>
+                    
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 relative z-10 text-white text-glow tracking-tight">
+                        El momento de escalar es ahora
+                    </h2>
+                    <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto relative z-10 font-light">
+                        Hablemos de tus procesos actuales y descubre cuánto tiempo y dinero podrías ahorrar mensualmente al implementar automatizaciones inteligentes.
+                    </p>
+                    
+                    <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="relative z-10 w-full sm:w-auto flex sm:inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-12 h-auto min-h-[4rem] py-3 bg-white text-background-dark rounded-[2rem] font-bold text-sm sm:text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
+                        <span class="text-center whitespace-normal leading-tight">Agendar consulta gratuita</span>
+                        <span class="material-symbols-outlined shrink-0 text-xl sm:text-2xl">send</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== VIEW: CONDICIONES ==================== -->
+        <div class="spa-view" data-view="condiciones">
+            <section class="max-w-4xl mx-auto px-6 pt-24 pb-12 text-center">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+                    Condiciones del Servicio
+                </h1>
+                <p class="text-lg text-slate-400 font-light">
+                    Última actualización: 13 de marzo de 2026
+                </p>
+            </section>
+
+            <section class="max-w-3xl mx-auto px-6 pb-32">
+                <div class="glass p-8 md:p-12 rounded-[2rem] prose prose-invert w-full">
+                    <p>Bienvenido a Automatiza con auxia. Al acceder y utilizar nuestros servicios de automatización de procesos y consultoría de software, aceptas estar sujeto a los siguientes términos y condiciones. Por favor, lee esto detenidamente antes de contratar nuestros servicios.</p>
+
+                    <h2>1. Descripción de los Servicios</h2>
+                    <p>Automatiza con auxia proporciona soluciones de software personalizadas y flujos de automatización para empresas. Los detalles exactos de cada proyecto se acordarán contractualmente en una propuesta técnica que incluirá tiempos, alcances y costos específicos.</p>
+
+                    <h2>2. Uso del Servicio y Licencia</h2>
+                    <p>Salvo que se acuerde lo contrario por escrito:</p>
+                    <ul>
+                        <li>Los flujos y automatizaciones construidos se licencian para el uso exclusivo del cliente bajo las plataformas gestionadas.</li>
+                        <li>No está permitida la reventa, distribución o comercialización directa del código o las soluciones implementadas a terceros sin nuestro consentimiento previo.</li>
+                    </ul>
+
+                    <h2>3. Obligaciones del Cliente</h2>
+                    <p>Para garantizar el éxito de las automatizaciones, el cliente se compromete a:</p>
+                    <ul>
+                        <li>Proporcionar acceso oportuno a las credenciales, APIs y plataformas necesarias.</li>
+                        <li>Asegurarse de poseer los derechos legales sobre los datos que serán procesados por nuestras automatizaciones.</li>
+                    </ul>
+
+                    <h2>4. Pagos y Suscripciones</h2>
+                    <p>Nuestros servicios pueden cotizarse por proyecto único o mediante un modelo de suscripción mensual de mantenimiento. Todos los pagos, a menos que se indique lo contrario en una factura oficial, no son reembolsables debido a la naturaleza de los costos de desarrollo.</p>
+
+                    <h2>5. Limitación de Responsabilidad</h2>
+                    <p>Nos esforzamos por proporcionar sistemas operando 24/7. Sin embargo, no somos responsables por interrupciones derivadas de fallos en APIs de terceros. En ningún caso seremos responsables por pérdidas de ingresos directas o indirectas derivadas de una interrupción del software.</p>
+
+                    <h2>6. Modificaciones de los Términos</h2>
+                    <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los clientes activos serán notificados razonablemente antes de que cualquier cambio material entre en vigor.</p>
+
+                    <h2>7. Contacto</h2>
+                    <p>Para cualquier duda sobre estas condiciones, la única vía de atención oficial es a través de nuestro canal de WhatsApp disponible en este sitio web.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== VIEW: PRIVACIDAD ==================== -->
+        <div class="spa-view" data-view="privacidad">
+            <section class="max-w-4xl mx-auto px-6 pt-24 pb-12 text-center">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+                    Política de Privacidad
+                </h1>
+                <p class="text-lg text-slate-400 font-light">
+                    Última actualización: 13 de marzo de 2026
+                </p>
+            </section>
+
+            <section class="max-w-3xl mx-auto px-6 pb-32">
+                <div class="glass p-8 md:p-12 rounded-[2rem] prose prose-invert w-full">
+                    <p>En Automatiza con auxia, respetamos su privacidad y estamos comprometidos a proteger la información personal y empresarial que confía en nuestros sistemas de automatización.</p>
+
+                    <h2>1. Información que Recopilamos</h2>
+                    <p>Nuestros servicios son estáticos en este sitio web y no recopilan información automáticamente a través de formularios. Cuando usted nos contacta o contrata nuestros servicios, podemos procesar:</p>
+                    <ul>
+                        <li><strong>Información de Contacto:</strong> Su número de teléfono y nombre proporcionado a través de WhatsApp.</li>
+                        <li><strong>Datos del Cliente:</strong> Credenciales y claves API necesarias para ejecutar las automatizaciones solicitadas bajo contrato.</li>
+                    </ul>
+
+                    <h2>2. Uso de la Información</h2>
+                    <p>Toda la información proporcionada se utiliza única y exclusivamente para diseñar, implementar y mantener las integraciones y flujos de trabajo de su empresa. Nunca venderemos, alquilaremos ni compartiremos sus datos con terceros con fines comerciales o de marketing.</p>
+
+                    <h2>3. Proveedores de Terceros</h2>
+                    <p>Nuestras automatizaciones a menudo actúan como un puente entre diferentes plataformas (por ejemplo, Meta API, OpenAI, Google Workspace). Tenga en cuenta que el manejo final de los datos en dichos servicios de destino se rige por sus respectivas políticas de privacidad.</p>
+
+                    <h2>4. Seguridad de los Datos</h2>
+                    <p>Implementamos las mejores prácticas de la industria, incluyendo el almacenamiento cifrado de variables de entorno y el uso de conexiones seguras (HTTPS/SSL), para salvaguardar la integridad y confidencialidad de la información gestionada por nuestros scripts.</p>
+
+                    <h2>5. Retención de Datos</h2>
+                    <p>Mantenemos su información de contacto y credenciales de acceso técnico mientras mantenga una relación comercial activa con nosotros. Al finalizar nuestros servicios, sus credenciales y accesos serán destruidos de nuestros sistemas seguros.</p>
+
+                    <h2>6. Derechos del Usuario</h2>
+                    <p>Usted tiene derecho a conocer, actualizar o solicitar la eliminación total de sus datos de nuestros registros en cualquier momento, de acuerdo a las normativas de protección de datos vigentes.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== VIEW: ELIMINACIÓN DE DATOS ==================== -->
+        <div class="spa-view" data-view="eliminacion-datos">
+            <section class="max-w-4xl mx-auto px-6 pt-24 pb-12 text-center">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+                    Solicitud de Eliminación de Datos
+                </h1>
+                <p class="text-lg text-slate-400 font-light max-w-2xl mx-auto">
+                    De acuerdo con nuestro cumplimiento como Proveedor de Tecnología y las directrices globales de privacidad.
+                </p>
+            </section>
+
+            <section class="max-w-3xl mx-auto px-6 pb-32">
+                <div class="glass p-8 md:p-12 rounded-[2rem] prose prose-invert w-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[40px]"></div>
+                    
+                    <h2>Instrucciones Simplificadas</h2>
+                    <p>En Automatiza con auxia respetamos su privacidad y comprendemos la importancia de controlar su huella digital. Usted no necesita llenar formularios complejos ni navegar por menús ocultos para solicitar la eliminación de su información.</p>
+
+                    <h2>Cómo solicitar el borrado</h2>
+                    <p>Si desea que eliminemos todo el historial de conversaciones, datos de contacto o credenciales almacenadas tras finalizar nuestras operaciones, el proceso es directo:</p>
+
+                    <div class="bg-background-dark/50 p-6 rounded-xl border border-primary/20 my-8 flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl mt-1">chat</span>
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-2 !mt-0">1. Envíenos un mensaje por WhatsApp</h3>
+                            <p class="text-slate-300 !mb-0">Simplemente envíenos un mensaje con el texto: <strong class="text-primary tracking-wide block mt-2">"Solicito la eliminación de mis datos"</strong>. Nuestro equipo de soporte gestionará su solicitud inmediatamente.</p>
+                        </div>
+                    </div>
+
+                    <h2>Nuestro compromiso (SLA)</h2>
+                    <p>Nos comprometemos a que el borrado total de sus datos en nuestras bases de datos directas se procesará en <strong>menos de 48 horas laborables</strong> desde la recepción del mensaje.</p>
+                    <p>Tenga en cuenta que si hemos configurado integraciones de terceros en sus cuentas propias (su CRM o su cuenta de Meta), usted retiene el control absoluto de esa información y puede eliminarla directamente desde sus plataformas.</p>
+
+                    <div class="mt-12 text-center">
+                        <a href="https://wa.me/3024453822" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-10 h-14 bg-primary/10 border border-primary/30 text-white rounded-xl font-bold transition-all hover:bg-primary/20 hover:border-primary/50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50">
+                            <span class="material-symbols-outlined text-[#25D366]">chat</span>
+                            Solicitar borrado por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
     </main>
 
     <!-- FOOTER -->
@@ -302,10 +346,10 @@
             </div>
             
             <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium">
-                <a href="index.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Inicio</a>
-                <a href="condiciones.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Condiciones</a>
-                <a href="privacidad.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Privacidad</a>
-                <a href="eliminacion-datos.html" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Eliminación de Datos</a>
+                <a href="#/inicio" data-footer-link="inicio" class="text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Inicio</a>
+                <a href="#/condiciones" data-footer-link="condiciones" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Condiciones</a>
+                <a href="#/privacidad" data-footer-link="privacidad" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Privacidad</a>
+                <a href="#/eliminacion-datos" data-footer-link="eliminacion-datos" class="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1">Eliminación de Datos</a>
             </div>
 
             <div class="text-slate-500 text-sm">
@@ -323,19 +367,7 @@
         </svg>
     </a>
 
-    <!-- Mobile Menu Script -->
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = this.querySelector('.material-symbols-outlined');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.textContent = 'close';
-            } else {
-                menu.classList.add('hidden');
-                icon.textContent = 'menu';
-            }
-        });
-    </script>
+    <!-- App Router -->
+    <script src="app.js"></script>
 </body>
 </html>

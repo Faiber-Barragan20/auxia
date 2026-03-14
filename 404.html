@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Redirigiendo… - auxia</title>
+    <script>
+        // GitHub Pages 404 → SPA redirect
+        // Converts /condiciones → /#/condiciones so the SPA router can handle it
+        var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+        var hash = path ? '#/' + path : '#/inicio';
+        window.location.replace(window.location.origin + '/' + hash);
+    </script>
+</head>
+<body></body>
+</html>
