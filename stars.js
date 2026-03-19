@@ -166,9 +166,24 @@
         }, 200);
     }
 
+    function initFuturisticTitles() {
+        var titles = document.querySelectorAll('.futuristic-title');
+        titles.forEach(function (el) {
+            el.addEventListener('mouseenter', function () {
+                if (el.classList.contains('animating')) return;
+                el.classList.add('animating');
+                el.addEventListener('animationend', function handler() {
+                    el.classList.remove('animating');
+                    el.removeEventListener('animationend', handler);
+                });
+            });
+        });
+    }
+
     function init() {
         if (!isMobile()) start();
         window.addEventListener('resize', onResize);
+        initFuturisticTitles();
     }
 
     if (document.readyState === 'loading') {
