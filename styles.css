@@ -7,8 +7,8 @@ body { font-family: 'Outfit', sans-serif; }
 /* ---- Glassmorphism ---- */
 .glass {
     background: rgba(37, 209, 244, 0.03);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(37, 209, 244, 0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     transform: translateZ(0);
@@ -19,8 +19,8 @@ body { font-family: 'Outfit', sans-serif; }
 }
 .glass-dark {
     background: rgba(5, 13, 14, 0.75);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(37, 209, 244, 0.12);
     transform: translateZ(0);
 }
@@ -33,6 +33,7 @@ body { font-family: 'Outfit', sans-serif; }
     background: radial-gradient(circle at 15% 50%, rgba(37, 209, 244, 0.04) 0%, transparent 50%),
                 radial-gradient(circle at 85% 30%, rgba(13, 242, 242, 0.03) 0%, transparent 50%);
     transform: translateZ(0);
+    isolation: isolate;
 }
 .grid-pattern {
     position: fixed;
@@ -44,6 +45,7 @@ body { font-family: 'Outfit', sans-serif; }
     mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     transform: translateZ(0);
+    isolation: isolate;
 }
 .ambient-orb {
     position: absolute;
@@ -51,7 +53,7 @@ body { font-family: 'Outfit', sans-serif; }
     filter: blur(50px);
     z-index: -1;
     opacity: 0.4;
-    will-change: transform;
+    will-change: transform, filter;
     transform: translateZ(0);
 }
 
@@ -187,6 +189,28 @@ input[type="text"], input[type="email"], input[type="tel"] {
         95%  { opacity: 1; }
         100% { top: 110%; opacity: 0; }
     }
+}
+
+/* ---- Chrome/Blink: eliminar backdrop-filter (caro con canvas animado 60fps) ---- */
+.chrome-perf .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(8, 20, 22, 0.55);
+}
+.chrome-perf .glass-dark {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5, 13, 14, 0.92);
+}
+.chrome-perf #mobile-menu {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5, 13, 14, 0.97);
+}
+.chrome-perf .ambient-orb {
+    filter: blur(20px);
+    animation: none !important;
+    opacity: 0.25;
 }
 
 /* ---- Mobile Scroll Performance ---- */

@@ -105,8 +105,12 @@
 
     function initCanvas() {
         canvas = document.createElement('canvas');
-        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;will-change:transform;';
         document.body.insertBefore(canvas, document.body.firstChild);
+        // Detectar Blink (Chrome, Edge) para overrides CSS de performance
+        if (window.chrome) {
+            document.body.classList.add('chrome-perf');
+        }
         ctx = canvas.getContext('2d');
         handleResize();
         for (var i = 0; i < STAR_COUNT; i++) {
@@ -145,7 +149,7 @@
     }
 
     // Adaptive quality system
-    var qualityLevel = 2; // 0=low, 1=medium, 2=high
+    var qualityLevel = 1; // 0=low, 1=medium, 2=high
     var frameTimes = [];
     var qualityCooldown = 0;
 
@@ -164,11 +168,11 @@
         avg /= frameTimes.length;
         var fps = 1000 / avg;
 
-        if (fps < 24 && qualityLevel > 0) {
+        if (fps < 40 && qualityLevel > 0) {
             qualityLevel--;
             applyQualityLevel();
             qualityCooldown = 2; // wait 2 cycles (120 frames) before re-evaluating
-        } else if (fps > 50 && qualityLevel < 2) {
+        } else if (fps > 55 && qualityLevel < 2) {
             qualityLevel++;
             applyQualityLevel();
             qualityCooldown = 2;
@@ -281,12 +285,7 @@
             var tailX = ss.x - ss.vx / ss.speed * tailLen;
             var tailY = ss.y - ss.vy / ss.speed * tailLen;
 
-            var grad = ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
-            grad.addColorStop(0, 'rgba(200, 230, 255, ' + alpha * 0.8 + ')');
-            grad.addColorStop(0.4, 'rgba(37, 209, 244, ' + alpha * 0.4 + ')');
-            grad.addColorStop(1, 'rgba(37, 209, 244, 0)');
-
-            // Outer glow stroke (replaces shadowBlur)
+            // Outer glow stroke
             ctx.beginPath();
             ctx.moveTo(ss.x, ss.y);
             ctx.lineTo(tailX, tailY);
@@ -294,11 +293,11 @@
             ctx.lineWidth = 4;
             ctx.stroke();
 
-            // Core stroke
+            // Core stroke (solid, no gradient allocation per frame)
             ctx.beginPath();
             ctx.moveTo(ss.x, ss.y);
             ctx.lineTo(tailX, tailY);
-            ctx.strokeStyle = grad;
+            ctx.strokeStyle = 'rgba(200,230,255,' + (alpha * 0.9) + ')';
             ctx.lineWidth = 1.5;
             ctx.stroke();
 
@@ -351,12 +350,12 @@
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseleave', onMouseLeave);
         lastTimestamp = 0;
-        qualityLevel = 2;
+        qualityLevel = 1;
         frameTimes = [];
         qualityCooldown = 0;
         animationId = requestAnimationFrame(animate);
+        applyQualityLevel();
         spawnShootingStar();
-        shootingInterval = setInterval(spawnShootingStar, SHOOTING_STAR_INTERVAL);
     }
 
     function stop() {
