@@ -27,10 +27,7 @@ body { font-family: 'Outfit', sans-serif; }
 
 /* ---- Section Separators ---- */
 .section-alt {
-    /* Full-width background via box-shadow trick on constrained-width sections */
-    box-shadow: 0 0 0 100vmax #0a1618;
-    clip-path: inset(0 -100vmax);
-    background: #0a1618;
+    background: #0d1520;
 }
 .section-divider {
     border-top: 1px solid rgba(37, 209, 244, 0.1);
