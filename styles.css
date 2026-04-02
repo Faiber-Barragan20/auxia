@@ -191,6 +191,69 @@ input[type="text"], input[type="email"], input[type="tel"] {
     }
 }
 
+/* ---- FAQ Accordion ---- */
+.faq-item {
+    border-bottom: 1px solid rgba(37, 209, 244, 0.1);
+    padding: 1.5rem 0;
+}
+.faq-item:last-child {
+    border-bottom: none;
+}
+.faq-question {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-answer {
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+.faq-item.open .faq-answer {
+    max-height: 200px;
+    opacity: 1;
+}
+.faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+}
+.faq-chevron {
+    transition: transform 0.3s ease;
+    color: #25d1f4;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ---- Pricing Cards ---- */
+.pricing-card {
+    position: relative;
+}
+.pricing-card.popular {
+    border-color: rgba(37, 209, 244, 0.4);
+    box-shadow: 0 0 32px rgba(37, 209, 244, 0.08);
+}
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #25d1f4;
+    color: #050d0e;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.25rem 1rem;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
 /* ---- Chrome/Blink: eliminar backdrop-filter (caro con canvas animado 60fps) ---- */
 .chrome-perf .glass {
     backdrop-filter: none;

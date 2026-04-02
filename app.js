@@ -1,27 +1,27 @@
 /* ============================================
-   Automatiza con auxia — SPA Router
+   Auxia — SPA Router
    ============================================ */
 
 (function () {
     'use strict';
 
     // Route → metadata mapping
-    const ROUTES = {
+    var ROUTES = {
         'inicio': {
-            title: 'Automatiza con auxia - Escala tu Empresa 24/7',
-            description: 'Automatiza los procesos repetitivos de tu empresa con auxia. Ahorra tiempo, elimina errores humanos y multiplica tu productividad operando 24/7.'
+            title: 'Auxia — Tu negocio gestionado por WhatsApp con IA | Colombia',
+            description: 'Auxia atiende tu WhatsApp, agenda citas y gestiona tu negocio automáticamente. Para cualquier negocio colombiano que dependa de su agenda.'
         },
         'condiciones': {
-            title: 'Condiciones del Servicio - Automatiza con auxia',
-            description: 'Términos y condiciones del servicio para los clientes de Automatiza con auxia.'
+            title: 'Condiciones del Servicio — Auxia',
+            description: 'Términos y condiciones del servicio de Auxia.'
         },
         'privacidad': {
-            title: 'Política de Privacidad - Automatiza con auxia',
-            description: 'Política de Privacidad y manejo de datos de Automatiza con auxia.'
+            title: 'Política de Privacidad — Auxia',
+            description: 'Política de Privacidad y manejo de datos de Auxia.'
         },
         'eliminacion-datos': {
-            title: 'Eliminación de Datos - Automatiza con auxia',
-            description: 'Instrucciones sobre cómo solicitar la eliminación de datos (Requisito Meta Tech Provider).'
+            title: 'Eliminación de Datos — Auxia',
+            description: 'Instrucciones sobre cómo solicitar la eliminación de datos.'
         }
     };
 
@@ -30,7 +30,7 @@
      * Returns 'inicio' if no hash or unrecognized route.
      */
     function getCurrentRoute() {
-        const hash = window.location.hash.replace('#/', '').replace('#', '');
+        var hash = window.location.hash.replace('#/', '').replace('#', '');
         return ROUTES[hash] ? hash : 'inicio';
     }
 
@@ -38,7 +38,7 @@
      * Show the view matching `route`, hide all others with a smooth fade.
      */
     function navigateTo(route) {
-        const views = document.querySelectorAll('.spa-view');
+        var views = document.querySelectorAll('.spa-view');
 
         // 1. Fade-out current visible view
         views.forEach(function (v) {
@@ -152,8 +152,19 @@
         });
     }
 
+    /**
+     * Chrome/Blink performance detection
+     */
+    function detectChrome() {
+        var isChromium = !!window.chrome;
+        if (isChromium) {
+            document.body.classList.add('chrome-perf');
+        }
+    }
+
     // ---- Bootstrap ----
     function init() {
+        detectChrome();
         initMobileMenu();
 
         // Initial navigation based on current hash
